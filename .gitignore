@@ -1,0 +1,57 @@
+cat > .gitignore << 'EOF'
+# ========== Системные файлы Mac ==========
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+*.swp
+*~
+~$*
+
+# ========== Frontend (Node.js) ==========
+frontend/node_modules/
+frontend/.npm
+frontend/.yarn
+frontend/dist/
+frontend/build/
+frontend/.next/
+frontend/.nuxt/
+frontend/.cache/
+frontend/.parcel-cache
+frontend/*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/.env
+frontend/.env.local
+
+# ========== Backend (Python) ==========
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/.venv/
+backend/venv/
+backend/env/
+backend/.env
+backend/.pytest_cache/
+backend/.coverage
+backend/*.log
+backend/instance/
+backend/db.sqlite3
+
+# ========== Backend uploads (НЕ КОММИТИТЬ!) ==========
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# ========== Общее ==========
+*.log
+.vscode/
+.idea/
+*.iml
+
+# ========== Docker ==========
+*.log
+EOF
+
+# Создаем .gitkeep для uploads
+touch backend/uploads/.gitkeep

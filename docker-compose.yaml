@@ -1,0 +1,35 @@
+version: '3.8'
+
+networks:
+  dev:
+
+services:
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - './nginx.conf:/etc/nginx/nginx.conf'
+    depends_on:
+      - backend
+      - frontend
+    networks:
+      - dev
+
+  backend:
+    build:
+      context: ./backend
+    environment:
+      - DATABASE_URL=postgresql://neondb_owner:npg_Ipc8f1KbRMiH@ep-still-bonus-agfd06qq-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require
+    ports: 
+      - "8000:8080" 
+    networks:
+      - dev
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    networks:
+      - dev

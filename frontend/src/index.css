@@ -1,0 +1,1556 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+.inter {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'coolvetica_rg';
+  src: url(./font/coolvetica_rg.ttf);
+}
+
+@import "tailwindcss";
+
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+body{
+  background-color: #F7F7F7;
+  overflow: hidden;
+}
+:root {
+  font-family: "Inter", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  --blueopac: #CDDBF8;
+  --midleprimary: #8aaffe;
+  --primary: #0051FF;
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.129 0.042 264.695);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+  --primary-foreground: oklch(0.984 0.003 247.858);
+  --secondary: oklch(98.809% 0.00011 271.152);
+  --secondary-foreground: oklch(55.706% 0.244 263.832);
+
+
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+  --accent: #e7e7e7;
+  --accent-foreground: oklch(0.208 0.042 265.755);
+  --destructive: oklch(0.577 0.245 27.325);
+
+  --reddd: #DC0000;
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.929 0.013 255.508);
+  --ring: oklch(70.382% 0.04025 257.029 / 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.984 0.003 247.858);
+  --sidebar-foreground: oklch(0.129 0.042 264.695);
+  --sidebar-primary: oklch(0.208 0.042 265.755);
+  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+  --sidebar-accent: oklch(0.968 0.007 247.896);
+  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
+  --sidebar-border: oklch(0.929 0.013 255.508);
+  --sidebar-ring: oklch(0.704 0.04 256.788);
+}
+
+.custom-input-main-input::placeholder {
+  color: var(--midleprimary) !important;
+  opacity: 1 !important;
+}
+
+.custom-input-main-input .ant-input::placeholder {
+  color: var(--midleprimary) !important;
+}
+
+.positionalerts{
+  position: absolute;
+  top: 5%;
+  left: 40%;
+}
+
+/* ИСПРАВЛЕННЫЕ СТИЛИ ДЛЯ КНОПОК */
+.NavButton{
+  margin-top: 0.6rem;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 12px 16px;
+  background-color: transparent;
+  width: 17vw;
+  display: block; /* меняем flex на block */
+  font-family: "Inter", sans-serif;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+  text-align: left; /* выравнивание текста по левому краю */
+  border: none; /* убираем границу */
+  position: relative; /* для псевдоэлементов */
+}
+
+/* Псевдоэлемент для увеличения кликабельной области */
+.NavButton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+}
+
+.activestate_navigaton{
+  cursor: pointer;
+  background-color: var(--blueopac);
+  color: var(--primary);
+}
+
+.activestate_navigaton:active{
+  cursor: pointer;
+  background-color: white;
+  color: #CDDBF8;
+}
+
+.NavButton:hover{
+  background-color: var(--blueopac);
+  color: var(--primary);
+}
+
+.NavButton:active{
+  background-color: white;
+  color: #CDDBF8;
+}
+
+/* Убедимся, что текст всегда кликабелен */
+.NavButton * {
+  pointer-events: none;
+}
+
+.navigationbar_content{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 20px 40px 20px;
+}
+.background_shadowdd {
+  filter: drop-shadow(0 2px 16.6px rgba(0, 0, 0, 0.04));
+}
+
+.background_shadow{
+  position: relative;
+
+}
+.background_shadow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: 0 2px 16.6px 0 rgba(0, 0, 0, 0.09);
+  pointer-events: none; /* Чтобы не блокировал клики */
+  border-radius: 16px; /* Та же скругленность что у контейнера */
+  z-index: -1; /* Помещаем под контент */
+}
+
+.calendar-remix{
+  padding-bottom: 2rem;
+  border-radius: 20px;
+  width: 17vw;
+  height: 17vw;
+  border: none;
+  box-shadow: 0 4px 16.6px 0 rgba(0, 0, 0, 0.09);
+}
+.calendar-remix {
+  background-color: #f9fafb; /* Светлый фон */
+  padding:10px 1vw;
+  font-family: 'Inter', sans-serif; /* Шрифт */
+}
+
+.gap-4 {
+    gap: calc(var(--spacing) * 1) !important;
+}
+
+.calendar-remix .rdp-day {
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  font-size: 0.8rem !important;
+}
+
+.exitstyle:hover{
+  color: red !important;
+  background-color: rgba(255, 0, 0, 0.189) !important;
+}
+
+.calendar-remix .rdp-day:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.calendar-remix .rdp-day_selected {
+  background-color: #ff0000;
+  border: none;
+}
+
+.calendar-remix .rdp-day_selected:hover {
+  background-color: #ff0000;
+}
+
+.NameOfUser{
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.PositionUser{
+  font-size: 0.9rem;
+  opacity: 0.5;
+}
+
+.titlepage{
+  font-family: 'coolvetica_rg';
+  font-weight: 100;
+  font-size: 2rem;
+  letter-spacing: 1.2px;
+}
+
+.titleproject{
+  font-family: 'coolvetica_rg';
+  font-weight: 100;
+  font-size: 2rem;
+  letter-spacing: 1.2px;
+  line-height: 35px;
+  padding-bottom: 16px;
+}
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.qoperignri{
+  display: flex;
+  align-content: center;
+  gap: 1rem;
+}
+.qoperignri p{
+  padding-top: 2px;
+}
+
+
+
+
+
+/* styles/Calendar01.css */
+
+/* Основной контейнер календаря */
+
+/* Заголовок календаря (месяц и год) */
+.calendar-remix .react-calendar__navigation {
+  background-color: #3b82f6; /* Синий фон для навигации */
+  color: white;
+  border-radius: 100px;
+  margin-bottom: 10px;
+}
+
+/* Кнопки навигации (стрелки) */
+.calendar-remix .react-calendar__navigation__arrow {
+  color: white;
+  font-size: 5.2rem;
+  padding: 19px !important;
+}
+
+/* Дни недели */
+.calendar-remix .react-calendar__month-view__weekdays {
+  color: #1f2937; /* Тёмный цвет для дней недели */
+  font-weight: 100;
+  text-transform: uppercase;
+}
+
+/* Ячейки дней */
+.calendar-remix .react-calendar__tile {
+  background-color: #ffffff;
+  border: 10px solid #e5e7eb00;
+  border-radius: 40px;
+  padding: 10px;
+  transition: background-color 0.2s ease;
+}
+
+/* Выбранный день */
+.calendar-remix .react-calendar__tile--active {
+  background-color: #3b82f6; /* Синий фон для выбранного дня */
+  color: white;
+  border: none;
+}
+
+/* При наведении на день */
+.calendar-remix .react-calendar__tile:hover {
+  background-color: #bfdbfe; /* Светло-синий при наведении */
+  cursor: pointer;
+}
+
+/* Отключённые дни (например, из других месяцев) */
+.calendar-remix .react-calendar__tile--disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+}
+
+.qkrengljkgnlwerl{
+  padding-bottom: 1vw;
+}
+
+.active_button_contquner{
+  width: 100%;
+  margin-top: 20px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  background-color: #F0F0F0;
+  border-radius: 20px;
+
+}
+.button_active_dash{
+  font-size: 1vw;
+  display: flex;
+  gap: 10px;
+  padding: 9px 10px;
+    transition: all 0.3s ease;
+}
+
+.button_active_dash svg path {
+  fill: #787878 !important;
+}
+
+.button_active_dash.active{
+background-color: white;
+border-radius: 16px;
+}
+
+
+.active svg path {
+  fill: var(--primary) !important;
+}
+.main_active_block{
+  display: flex;
+  gap: 14px;
+  flex-direction: column;
+}
+.tasks{
+  margin-top: 10px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 20px;
+}
+.tasks_container{
+    padding: 10px;
+    background-color: #F0F0F0;
+    border-radius: 12px;
+}
+
+.prpject_container{
+  margin-top: 20px;
+}
+.main_active_block{
+  display: flex;
+}
+.Copmleted{
+    padding: 2px 8px;
+  background-color: #DCFCE7;
+  color: #166534;
+  font-size: 13px;
+  border-radius: 12px;
+}
+.InProcess{
+  padding: 2px 8px;
+  background-color: #DBEAFE;
+  color: #1D4ED8;
+  font-size: 13px;
+  border-radius: 12px;
+}
+.archoved{
+  padding: 2px 8px;
+  background-color: #F1F5F9;
+  color: #64748B;
+  font-size: 13px;
+  border-radius: 12px;
+}
+
+.dopinfomatuon{
+  display: flex;
+  justify-content:space-between;
+  padding-top: 10px;
+}
+
+.description_tasks{
+  padding-top: 7px;
+  text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Ограничение в 2 строки */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.title_task_button{
+  font-size: 17px;
+    text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Ограничение в 2 строки */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.description_tasks{
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+
+.timeOftasks{
+  color: #0051FF;
+  font-size: 14px;
+}
+
+.tastks_content{
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 67vh;
+  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+}
+.tastks_content.donthavetask{
+  border: 2px #0051ff88 dashed;
+}
+
+.user_active_main{
+  padding: 2rem 2rem 2rem 0rem;
+}
+
+.wefu{
+  display: flex;
+}
+
+.main_active_block{
+  display: flex;
+  flex-direction: row;
+}
+
+.button_input_project{
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  padding-bottom: 17px;
+}
+
+.projects{
+  width: 50vw;
+}
+
+.add_project_mainButtin{
+  font-size: 1vw !important;
+  width: 720px;
+}
+
+
+.add_task_mainButtin{
+  margin-top: 10px;
+  font-size: 1vw !important;
+  width:100%;
+}
+
+
+.addStuff_container{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #00000084;
+}
+.projectadd{
+  z-index: 300;
+}
+.addtaskalerttttt{
+    z-index: 700;
+}
+.addtask_container{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #00000084;
+}
+
+
+
+.Addtaskalert{
+  border-radius: 20px;
+  padding: 10px;
+  width: 481px;
+  background-color: #F7F7F7;
+  height: 589px;
+}
+
+
+
+.closedButton{
+  cursor: pointer;
+  border: 2px #DCD9D9 solid;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.closedButton:hover{
+  border: 2px white solid;
+  background-color: var(--reddd);
+}
+
+.closedButton:hover svg path{ 
+  stroke: white;
+}
+
+.title_closed_stuff{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title_closed{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title_closed p{
+  padding-left: 9px;
+    font-family: 'coolvetica_rg';
+    font-size: 25px;
+    color: #272727;
+    letter-spacing: 1px;
+}
+
+.Addprojectalert{
+    border-radius: 20px;
+  padding: 10px;
+  width: 1250px;
+  background-color: #F7F7F7;
+  height: 736px;
+}
+
+.project_items_button{
+  overflow: hidden;
+   overflow-y: auto;
+   /* border: 2px blue solid; */
+     height: 78vh;
+     border-radius: 0px;
+      position: relative;
+}
+.projectbutton{
+  cursor: pointer;
+  height: 100%;
+  background-color: white;
+  padding: 16px;
+    border: 2px transparent dashed;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+
+.projectbutton:hover{
+  border: 2px #0051FF dashed;
+}
+.title_ofproject{
+  letter-spacing: 1px;
+  font-size: 22px;
+    font-family: 'coolvetica_rg';
+        line-height: 23px;
+            text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Ограничение в 2 строки */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+p {
+    display: block;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    unicode-bidi: isolate;
+}
+.down_information_projecvt,
+.time_order{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.DescriptionProject{
+          line-height: 16px;
+  opacity: 0.6;
+  font-size: 13px;
+              text-align: left;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* Ограничение в 2 строки */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.down_information_projecvt{
+  padding-top: 15px;
+}
+.time_order {
+    padding-top: 8px;
+    display: flex
+;
+    flex-direction: column;
+    padding-bottom: 8px;
+    gap: 10px;
+    align-items: flex-start;
+}
+.task_count{
+  opacity: 0.6;
+  font-size: 12px;
+}
+
+.orederhuman{
+  font-size: 14px;
+  color: #0051FF;
+  padding: 5px 7px;
+  background-color: #F0F0F0;
+  border-radius: 6px;
+}
+.TimeOFproject{
+  font-size: 14px;
+  color: #000000;
+  padding: 5px 7px;
+  border: 1px #D9D9D9 solid ;
+  background-color: white;
+  border-radius: 6px;
+}
+
+.container_content_of_page{
+  padding: 10px;
+  width: 78vw;
+}
+.titile_stuff_page{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.count_stuff{
+  opacity: 0.6;
+  font-size: 13px;
+}
+.line{
+  margin-top: 18px;
+  opacity: 0.22;
+  background-color: #000000;
+  height: 1px;
+  width: 100%;
+}
+
+.grid_oftitles_for_stuff{
+  padding-bottom: 10px;
+  padding-top: 10px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.jeft_tipe{
+  gap: 200px;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.wef{
+  margin-right: 20px;
+}
+
+.grid_oftitles_for_stuff_get{
+  cursor: pointer;
+  padding: 12px 0px;
+  background-color: white;
+  border-radius: 16px;
+  border: 2px transparent solid;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+.grid_oftitles_for_stuff_get.active{
+    border: 2px #0051FF solid !important;
+}
+.grid_oftitles_for_stuff_get:hover{
+      border: 2px #0051ff6d dashed;
+}
+.jeft_tipewef{
+
+    gap: 120px;
+  padding: 0px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stuff_list{
+  display: flex;
+  flex-direction: column;
+  gap:16px;
+  height: 69vh;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.taskff{
+  color: #1D4ED8;
+}
+.ijqeiwfoiquweifhioquwef{
+    width: 13vw;
+}
+.namestuffff{
+  width: 14vw;
+  color: #000000;
+    transition: all 0.3s ease;
+}
+
+.grid_oftitles_for_stuff_get:hover .namestuffff{
+  color: #0051FF;
+}
+
+.ButtonDefault{
+  padding: 5px 20px;
+  border: 1px #D9D9D9 solid;
+  border-radius: 5px;
+  color: black;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+.buttons_for_stuff{
+  margin-right: auto;
+  padding-top: 16px;
+}
+
+.ButtonDefault:hover{
+  padding: 5px 20px;
+  border: 1px var(--primary) solid;
+  border-radius: 5px;
+    color: var(--primary);
+  background-color: white;
+}
+.ButtonDefault:active{
+    filter: drop-shadow(0px 0px 10.6px rgba(0, 13, 255, 0.24));
+}
+.ButtonDelete{
+  padding: 5px 20px;
+  border: 1px #D9D9D9 solid;
+  border-radius: 5px;
+  color: white;
+  background-color: #DC0000;
+  transition: all 0.3s ease;
+}
+.buttons_for_stuff{
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+}
+.get_buttons{
+  display: flex;
+  gap: 10px;
+}
+
+.buttons{
+  display: flex;
+  gap: 10px;
+}
+
+ .title_archive{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+ }
+
+ .ccountproject{
+  opacity: 0.6;
+  font-size: 12px;
+ }
+.input_search{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.newinput{
+  width: 24.8vw;
+  height: 2.8vw;
+}
+
+.input_search{
+  padding-top: 16px;
+}
+.svg_size{
+  width: 10px;
+  height: 10px;
+}
+
+.data_base_of_priject_ready{
+  height: 79vh;
+  padding-top: 16px;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.newmm{
+  color: #166534;
+}
+
+
+.mt-2 {
+    margin-top: calc(var(--spacing) * 0.5) !important;
+}
+
+.NavButton:hover .exitstyle svg path{
+ fill: #ff0000 !important;
+}
+
+.title_closed_stuff{
+  padding-left: 10px;
+  font-size: 23px;
+  letter-spacing: 0.5px;
+    font-family: 'coolvetica_rg';
+}
+.change_container{
+  padding: 20px;
+  background-color: white;
+  width: 100%;margin-top: 16px;
+  border-radius: 16px;
+  height: 275px;
+    filter: drop-shadow(0 2px 16.6px rgba(0, 0, 0, 0.14));
+}
+.white_background_areyoushote{
+  padding: 16px;
+
+  background-color: white;
+  width: 100%;margin-top: 6px;
+  border-radius: 16px;
+  height: 95px;
+  filter: drop-shadow(0 2px 16.6px rgba(0, 0, 0, 0.14));
+}
+.title_closed{
+  padding-bottom: 10px;
+}
+.backgroundtask_white{
+  padding: 16px;
+  background-color: white;
+  width: 100%;margin-top: 6px;
+  border-radius: 16px;
+  height: 64vh;
+
+}.backgroundprojecvt_white{
+  display: flex;
+  flex-direction: column;
+    padding: 16px;
+  background-color: white;
+  width: 100%;margin-top: 6px;
+  border-radius: 16px;
+  height: 83vh;
+}
+.dangerwhith{
+  width: 100px;
+}
+.buttonsssss{
+  margin-left: 24vw;
+  padding-top: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+.AddStuffalertAreYpushore{
+    border-radius: 20px;
+  padding: 10px;
+  width: 581px;
+  background-color: #F7F7F7;
+  height: 156px;
+}
+
+.AddStuffalert{
+  border-radius: 20px;
+  padding: 10px;
+  width: 481px;
+  background-color: #F7F7F7;
+  height: 350px;
+}
+
+.newinputtt{
+  font-weight: 400;
+  width: 100%;
+  height: 37px;
+  font-size: 16px;
+}
+.contacts{
+  padding-bottom: 13px;
+  padding-top: 13px;
+  gap: 13px;
+  display: flex;
+  align-items: center;
+}
+
+.buttondropdown_custom{
+  width: 100%;
+  height: 37px;
+}
+/* .anticon svg {
+    color: #0051FF;
+    display: inline-block;
+} */
+
+.desckjk p{
+  line-height: 17px;
+  padding-top: 10px;
+  opacity: 0.2;
+}
+
+
+.time_and_button{
+  padding-bottom: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.time_and_button p{
+  font-size: 13px;
+  opacity: 0.4;
+}
+
+.areyushireoisition{
+  z-index: 800;
+}
+
+/* 
+input:active{
+  border: none;
+}
+input:hover{
+  border: none;
+}
+input:focus {
+    outline: none;
+    border: none;
+    box-shadow: none;
+} */
+
+input:focus-visible {
+    outline: none;
+}
+
+/* Убедитесь, что z-index Popover достаточно высокий */
+[data-radix-popper-content-wrapper] {
+  z-index: 9999 !important;
+}
+
+.inputtitileoftask{
+  font-size: 20px;
+  width: 100%;
+}
+.linetitle{
+  margin-top: 5px;
+  width: 100%;
+  height: 1.5px;
+  border-radius: 2px;
+  background-color: #c4c4c48a;
+  transition: all 0.3s ease;
+}
+
+.inputtitileoftask:active ~ .linetitle,
+.inputtitileoftask:focus ~ .linetitle {
+    background-color: #6291f7;
+}
+.inputs_{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.button_downloadddddd{
+  width: 100%;
+}
+
+
+.brothers_dropdown{
+  gap: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 100%;
+}
+.dropdownbuttonchoose{
+  width: 100%;
+}
+
+.object_drop_down{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.timepcik{
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.timepicker_custom{
+  width: 100%;
+}
+.qergeqrg{
+  margin-top: 16px;
+}
+.qergeqrgwefwef{
+  margin-top: 5px;
+}
+
+.border{
+  border: 0px black solid;
+}
+
+.contentsett{
+  display: flex;
+  justify-content: space-between;
+}
+.left_content{
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+.right_content{
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    width: 100%;
+}
+.titleinpit{
+  padding-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.contactsform{
+  padding-top: 8px;
+  display: flex;
+  gap: 16px;
+}
+
+.custombuttonselecttime{
+  border: 1px #d7d7d7 solid ;
+  border-radius: 0.4rem;
+  height: 33px;
+}
+.custombuttonselecttime:hover{
+  color: var(--primary);
+    border: 1px var(--primary) solid ;
+    background-color: white;
+}
+.container_selectdeadline{
+  display: flex;
+  align-items: center;
+  align-content: center;
+  gap: 12px;
+}
+.selectjfuwefi{
+  width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: space-between;
+}
+
+.customselecttimedd{
+  width: 100%;
+}
+.linesecltf{
+  width: 12px;
+  height: 1px;
+  background-color: black;
+}
+
+.disabled{
+  padding-top: 8px;
+  font-size: 0.9rem;
+  opacity: 0.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Ограничение в 2 строки */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.filesdownload{
+  padding-bottom: 8px;
+}
+.sectime{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.materialforproject{
+  padding-top: 13px;
+}
+.container_ofblockdd{
+  display: flex;
+  height: 100%;
+}
+.use_form{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ijewf{
+  font-size: 13px;
+  opacity: 0.5;
+}
+
+.bacgroundaddprojectrit{
+  background-color: #F0F0F0;
+  border-radius: 9px;
+  padding: 13px;
+  height: 41vh;
+  overflow-x: hidden;
+    overflow-y: auto;
+  width: 100%;
+}
+
+.rebgiuriuo{
+    height: 54vh !important;
+}
+
+
+:where(.css-dev-only-do-not-override-1odpy5d).ant-dropdown .ant-dropdown-menu, :where(.css-dev-only-do-not-override-1odpy5d).ant-dropdown-menu-submenu .ant-dropdown-menu{
+  height: 19vh;
+}
+
+.bbhabwd{
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+
+.settingshumantask{
+  display: flex;
+  gap: 16px;
+}
+.addsteps{
+  scrollbar-color: hidden;
+  width: 37vw;
+  overflow: auto;
+  padding: 13px;
+  border-radius: 9px;
+  border: 1px #D9D9D9 solid;
+}
+.customsteps{
+min-width: 1200px;
+}
+.addsteps::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+.addstepssssss{
+  scrollbar-color: hidden;
+  width: 37.3vw;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 13px;
+  border-radius: 9px;
+  border: 1px #D9D9D9 solid;
+}
+
+.enterstep{
+  display: flex;
+  gap: 16px;
+  padding-top: 16px;
+}
+
+.containeroflist{
+  margin-top: 8px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-radius: 8px;
+  height: 47vh;
+  width: 100%;
+}
+/* From Uiverse.io by PriyanshuGupta28 */ 
+.input[type="checkbox"] {
+  display: none;
+}
+
+
+  /* Style for the custom checkbox */
+.custom-checkbox {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border: 2px solid #DDDBDB;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+}
+
+  /* Style for the custom checkmark */
+.custom-checkbox::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  background-color: #0051FF;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+  /* Show the checkmark when checkbox is checked */
+.input[type="checkbox"]:checked + .custom-checkbox::after {
+  opacity: 1;
+}
+.infstuff{
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.bacground_ofstf{
+  background-color: white;
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+.titlechjtf{
+  font-size: 16px;
+}
+.titlechjtfffff{
+  color: #0051FF;
+    font-size: 13px;
+}
+
+.containeroflist{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.containeroflist::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+.addtaskprojectittle{
+  font-size: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* Ограничение в 2 строки */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bacgroundaddtaskpriject{
+  cursor: pointer;
+  background-color: white;
+  padding: 13px;
+  border-radius: 10px;
+
+}
+
+.descriptionaddtaskalertproject{
+    font-size: 13px;
+    opacity: 0.6;
+    display: -webkit-box;
+  -webkit-line-clamp: 4; /* Ограничение в 2 строки */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.timeaddtaskprojectalert{
+  font-size: 13px;
+  color: #0051FF;
+}
+.maininfaddtaskproject{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+
+.buttoncontainercc{
+    height: 40vh;
+}
+
+.addprojectalert{
+  margin-top: 10px;
+}
+
+.textareakddkd{
+  padding-bottom: 10px;
+}
+.weiojfpiw{
+  padding-bottom: 10px;
+}
+
+.qwefqwefqwefqwefq{
+  width: 100%;
+}
+
+
+
+.mainwindowproject{
+  margin-top: 22px;
+  width: 78vw;
+  height: 83vh;
+  padding: 16px;
+  border-radius: 16px;
+  background-color: white;
+}
+
+.svgparameters svg{
+  width: 15px;
+}
+
+.openprojectblcokwerf{
+  display: flex;
+  align-items: center;
+ gap: 10px;
+}
+
+
+.maininformationpr{
+  display: flex;
+  height: 100%;
+  gap: 16px;
+  width: 100%;
+}
+.titleinfofpr{
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+.wrbl{
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+}
+.filesand_linkspr{
+  padding-top: 16px;
+}
+.containerfilesprcustom{
+  display: flex;
+  padding: 7px;
+  gap: 8px;
+  overflow-y: hidden;
+  overflow-x: auto;
+  width: 29.7vw;
+  border: 1px #d9d9d9 solid;
+  border-radius: 6px;
+  scrollbar-width: none;
+}
+.containerfilespr{
+  overflow-y: hidden;
+  overflow-x: auto;
+  width: 37.3vw;
+  border: 1px #d9d9d9 solid;
+  border-radius: 6px;
+}
+.filesand_linkspr,
+.files_ofproject{
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
+
+.blocklinkfile p{
+  font-size: 13px;
+  padding: 3px 10px;
+  color: #0051FF;
+}
+.blocklinkfile{
+  cursor: pointer;
+  background-color: #0051ff31;
+  border-radius: 6px;
+}
+.containerfilespr{
+  padding: 6px;
+}
+
+.containerfilespr{
+  display: flex;
+  gap: 8px;
+  scrollbar-width: none;
+}
+.rightblockpfpr{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.container_maininffjijiqiepfro{
+  display: flex;
+    gap: 16px;
+}
+/* .customstepawds{
+  max-width: 1200px;
+} */
+
+.buttonsblockuseproject{
+  display: flex;
+  gap: 8px;
+}
+
+.cutsondfeultbuttonhover:hover{
+  color: red !important;
+  border: 1px red solid !important;
+}
+.cutsondfeultbuttonhover:active{
+  color: rgba(255, 0, 0, 0.474) !important;
+  border: 1px rgba(255, 0, 0, 0.307) solid !important;
+}
+.downofusepr{
+  padding-top: 6.4vw;
+  display: flex;
+  justify-content: space-between;
+}
+.timecontainerpri{
+  display: flex;
+  gap: 16px;
+  align-content: center;
+}
+.fortaskopen{
+    padding: 6px 46px !important;
+}
+.blocktime{
+  font-size: 14px;
+  font-weight: 400;
+  padding: 6px 16px;
+  border: 1px #7878784c solid;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.timeblock p{
+  padding-bottom: 6px;
+}
+.timeblock{
+  margin-top: -33px;
+}
+
+.prjectstaff{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.staffchose{
+  padding: 6px 36px;
+  width: 14.5vw;
+  font-size: 13px;
+  border: 1px #78787867 solid;
+  border-radius: 6px;
+}
+
+.tasktabqwefqwef{
+  width: 24.8vw;
+  border: 2px transparent dashed;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: white;
+  padding: 13px;
+  transition: all 0.3s ease;
+}
+
+
+.tasktabqwefqwef:hover{
+  border: 2px #0051FF dashed;
+}
+
+.dwdwwd{
+    padding-right: 90px;
+}
+.wefwefewf{
+    padding-right: 33px;
+}
+
+.erg{
+  display: flex;
+  flex-direction: column;
+}
